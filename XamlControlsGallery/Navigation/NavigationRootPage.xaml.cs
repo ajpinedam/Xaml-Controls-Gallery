@@ -109,7 +109,7 @@ namespace AppUIBasics
                 NavigationOrientationHelper.UpdateTitleBar(NavigationOrientationHelper.IsLeftMode);
             };
 
-            NavigationViewControl.RegisterPropertyChangedCallback(muxc.NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));            
+            NavigationViewControl.RegisterPropertyChangedCallback(muxc.NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
         }
 
         private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
@@ -225,7 +225,7 @@ namespace AppUIBasics
                         (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute) , ShowAsMonochrome = false} :
                         (IconElement)new FontIcon()
                         {
-                            FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                            FontFamily = Application.Current.Resources["SymbolThemeFontFamily"] as FontFamily,
                             Glyph = imagePath
                         };
         }
@@ -356,7 +356,7 @@ namespace AppUIBasics
                     var matchingItems = group.Items.Where(
                         item =>
                         {
-                            // Idea: check for every word entered (separated by space) if it is in the name, 
+                            // Idea: check for every word entered (separated by space) if it is in the name,
                             // e.g. for query "split button" the only result should "SplitButton" since its the only query to contain "split" and "button"
                             // If any of the sub tokens is not in the string, we ignore the item. So the search gets more precise with more words
                             bool flag = true;
